@@ -1,15 +1,26 @@
-# DomainSleuth: SleuthHound
-This component of DomainSleuth is the automated logic engine that parses through data for misconfigurations. SleuthHound is designed to ingest SharpHound JSON data and identify specific, high-impact AD misconfigurations that can lead to privilege escalation, or even domain compromise. 
+# SleuthHound
+SleuthHound is a modular Python parsing and detection engine designed to analyze raw SharpHound Active Directory JSON exports. Built to simplify domain security assessments, it automatically iterates through multi-run scan data, aggregates telemetry across timestamped prefixes, and flags high-risk security misconfigurations and attack paths; delivering structured, actionable output for blue team operators and defenders.
+
+---
+
+## What's New in v2.1
+- **New Detection Modules**: Added targeted checks for Kerberoastable Accounts (SPN hunting) and DCSync Abuse (GetChanges/GetChangesAll rights normalization).
+- **Multi-Run Telemetry Aggregation**: Enhanced dataset iteration across timestamped scan prefixes for multi-scan SharpHound runs.
+- **Terminal UI Enhancements**: Added dynamic ASCII banner generation for a polished command-line experience.
+
+---
 
 ## Hashes
 For those who opts to download the file rather than populating their own:
-- **`SleuthHound.py` SHA256**: c67bb58944d19a00153994db98c562f58e301e7fc0eb9757d9b559a86b6ca443
-- **`SleuthHound.py` MD5**: b13229ffc7cef436efb3599fb431d671
+- **`SleuthHound.py` SHA256**: `c67bb58944d19a00153994db98c562f58e301e7fc0eb9757d9b559a86b6ca443`
+- **`SleuthHound.py` MD5**: `b13229ffc7cef436efb3599fb431d671`
 
 ### Integrity Verification
 To verify the integrity of the download, simply run:
 - **Windows**: `CertUtil -hashfile SleuthHound.py SHA256`
 - **Linux/Mac**: `shasum -a 256 SleuthHound.py`
+
+---
 
 ## Features & Detections
 The current version of the script identifies the following vulnerabilities:
@@ -20,6 +31,8 @@ The current version of the script identifies the following vulnerabilities:
 - **Outdated Operating Systems**: Detection of legacy systems (such as 2008, 2012, and more) based on the OS version strings.
 - **Kerberoastable Accounts**: Detects user accounts with Service Principal Names set that are vulnerable to offline brute-force cracking of their service ticket hashes.
 - **DCSync Abuse**: Identifies accounts with replication rights that can be abused to extract password hashes from the domain controller.
+
+---
 
 ## Requirements
 - **SleuthHound Home**: Ensure SleuthHound.py is properly setup in the appropriate directory with and input and output folder. You can create the home for it with:
@@ -59,6 +72,8 @@ export PATH="$PATH:/usr/bin/python3"
 
 - **SharpHound Data**: You must have the output JSON files. These must be extracted from the SharpHound zip and stored in the input directory. SleuthHound utilizes `users.json`, `computers.json`, and `domains.json` by default. 
 
+---
+
 ## Setup and Usage
 1. **Preparation**: Ensure your SharpHound JSON files are unzipped and located in the input directory. You can do so using with:
   - **Windows** (Replace `<sharphound_zip> with the appropriate file name. 
@@ -87,6 +102,8 @@ export PATH="$PATH:/usr/bin/python3"
 ```bash
 cd output && ls
 ```
+
+---
 
 ## Source Code 
 If you would prefer to create the file yourself, you can do so in two simple steps:
