@@ -3,7 +3,7 @@ SleuthHound is a modular Python parsing and detection engine designed to analyze
 
 ---
 
-## What's New in v2.1
+## What's New in v2.0
 - **New Detection Modules**: Added targeted checks for Kerberoastable Accounts (SPN hunting) and DCSync Abuse (GetChanges/GetChangesAll rights normalization).
 - **Multi-Run Telemetry Aggregation**: Enhanced dataset iteration across timestamped scan prefixes for multi-scan SharpHound runs.
 - **Terminal UI Enhancements**: Added dynamic ASCII banner generation for a polished command-line experience.
